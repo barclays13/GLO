@@ -56,23 +56,22 @@ let amountOfExpenses1 = +prompt('Во сколько это обойдется?'
 let costsMonth2 = prompt('Какие обязательные ежемесячные расходы у вас есть? ', 'Шопинг, развелечения...');
 let amountOfExpenses2 = +prompt('Во сколько это обойдется?', 250);
 
-let budgetMonth = money - amountOfExpenses1 - amountOfExpenses2; //Доход за месяц
+let budgetMonth = money - ( amountOfExpenses1 + amountOfExpenses2 ); //Доход за месяц
 console.log('Доход за месяц: ', budgetMonth); 
 
 let MonthsToSave = Math.ceil ( mission / budgetMonth ); 
 console.log('За сколько месяцев будет достигнута цель:', MonthsToSave); 
 
 
-
-let budgetDay = Math.floor((amountOfExpenses1 + amountOfExpenses2) / 30 );
+let budgetDay = Math.floor(money / 30 );
 console.log('Бюджен на 1 день : ', budgetDay); // Вывод бюджета на 1 день
 
 
-if(budgetDay > 800){
+if(budgetDay >= 800){
     console.log('Высокий уровень дохода');    
-} else if ( 300 < budgetDay && budgetDay < 800){
+} else if ( 300 <= budgetDay && budgetDay < 800){
     console.log('Средний уровень дохода');
-} else if ( 0 < budgetDay && budgetDay < 300 ){
+} else if ( 0 <= budgetDay && budgetDay < 300 ){
     console.log('Низкий уровень дохода');
 } else {
     console.log('Что то пошло не так');
