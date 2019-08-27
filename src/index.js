@@ -76,3 +76,13 @@ if(budgetDay >= 800){
 } else {
     console.log('Что то пошло не так');
 }
+
+
+let lang = prompt ('Введите ru или en', 'ru или en');
+if ( lang == 'ru'){
+    alert('Понедельник, Вторник, Среда, Чертверг, Пятница, Суббота, Воскресенье');
+} else if ( lang == 'en' ) {
+    alert('Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday');
+} else {
+    alert('Введено неправильное значение');
+}
