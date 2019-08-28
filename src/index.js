@@ -22,18 +22,14 @@ let deposit = confirm('Есть ли у вас депозит в банке?');
 let start = function (){ // вводим месяный доход
     do{       
         money = +prompt('Ваш месячный доход? ', 1300); 
-        if(isNaN(money)){
-            money = +prompt('Ваш месячный доход? ', 1300); 
-        } else {      
-            return(money);
-        }
+
         
-    } while (typeof(money) === 'number'  );
+    } while ( typeof(money) === 'number' ||  money.value == '' ||  money == null );
 }
 
 let resultMoney = start(); //выводим месячный доходд с проверкой на число
 console.log('Ваш месячный доход', resultMoney);
-
+/*
 
 
 let getExpensesMonth = function(){    //Функция возвращает сумму всех расходов за месяц
