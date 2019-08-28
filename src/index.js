@@ -1,86 +1,127 @@
 'use strict';
 
-//lesson2
 
-const income = 'рабство';
-
-
+let money;
 const mission = 6000;
 const period = 10;
-
-/*console.log(typeof money); //выводим тип данных переменной
-console.log(typeof income); //выводим тип данных переменной
-console.log(typeof deposit); //выводим тип данных переменной
-
-console.log('Длина переменной income: ', income.length ); // Длина строки
-
-console.log('Период ', period ,' месяцев.'); // вывод текста + переменная
-console.log('Цель зработать ', mission ,' бел.руб.'); // вывод текста + переменная
-
-console.log(addExpenses.charAt(7)); // выводит символ 1
-console.log(addExpenses[0]); // выводит символ 1
-console.log(addExpenses.substring(6)); // выводит с и до конца
-console.log(addExpenses.substring(5, 10)); // выводит с и до какого
-console.log(addExpenses.slice(6)); // Выводит все после 6 символа
-console.log(addExpenses.slice(-11)); // Выводит послдних 11 символов
-console.log(addExpenses.substr(10, 4)); // Выводит с какого и сколько
-console.log(addExpenses.indexOf(',')); //индекс символа в данной строке
-console.log(addExpenses.replace('Еда', 'Продукты питания')); //заменяет еда на продукты питания в строке
-console.log(addExpenses.toLowerCase()); //нижний регистр
-console.log(addExpenses.split(',')); //разбить строку массив по ,
-let cchengeExpenses = addExpenses.toLowerCase(); // сохраняем строку в нижнем регистре
-console.log(cchengeExpenses.split(',')); //разбить строку массив по ,
-console.log(addExpenses.toUpperCase()); //верхний регистр регистр
-//console.log(budgetDay = money / 30);
-//end lesson 2
-*/
-
-
-let money = +prompt('Ваш месячный доход? ', 1300); // месечный доход, вводим
-
-let  addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Транспорт, питание, отдых').split(","); // возможные расходы
-//console.log('Расходы= ', addExpenses);
-
-let deposit = confirm('Есть ли у вас депозит в банке?'); 
-
-
-
-
-
+const income = 'рабство';
 let ExpensesMonth;
 let accumulatedMonth;
 let MonthsToSave;
 let budgetDay;
+let amountOfExpenses1;
+let amountOfExpenses2;
+let costsMonth1;
+let costsMonth2;
 
-let costsMonth1 = prompt('Какие обязательные ежемесячные расходы у вас есть? ', 'Авто, питание, оплата счетов'); 
-let amountOfExpenses1 = +prompt('Во сколько это обойдется?', 250);
-let costsMonth2 = prompt('Какие обязательные ежемесячные расходы у вас есть? ', 'Шопинг, развелечения...');
-let amountOfExpenses2 = +prompt('Во сколько это обойдется?', 250);
 
-function getExpensesMonth(){            //Функция возвращает сумму всех расходов за месяц
-    
-    ExpensesMonth = amountOfExpenses1 + amountOfExpenses2 ;
-    return ('Расходы в месяц состовляют:', ExpensesMonth);
+
+let  addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Транспорт, питание, отдых').split(","); // возможные расходы
+let deposit = confirm('Есть ли у вас депозит в банке?'); 
+
+
+let start = function (){ // вводим месяный доход
+
+    do{       
+        money = +prompt('Ваш месячный доход? ', 1300); 
+        console.log('Ваш месячный доход:',money);
+        return money;
+    } while ( isNaN(money) );
+        
+     
 }
 
+let mone = start();
 
 
-function getAccumulatedMonth(){ //Функция возвращает Накопления за месяц
-    accumulatedMonth = money - ExpensesMonth; 
+
+
+
+
+let getExpensesMonth = function(){    //Функция возвращает сумму всех расходов за месяц
+    let sum = 0;
+
+    for (let i = 0; i < 2;  i++){
+
+        if (i === 0){
+
+            costsMonth1 = prompt('Какие обязательные ежемесячные расходы у вас есть? ', 'Авто, питание, оплата счетов');
+        } if (i === 1){
+
+            costsMonth2 = prompt('Какие обязательные ежемесячные расходы у вас есть? ', 'Шопинг, развелечения...');
+        }
+         
+        sum += +prompt('Во сколько это обойдется?', 250);
+            
+            while( isNaN(sum) ){
+                sum += +prompt('Во сколько это обойдется?', 250);               
+            }    
+        
+    }
+    return sum;
+    
+   
+}
+
+let expensesAmount = getExpensesMonth(); //  В переменной все expensesAmount находятся все расходы
+console.log('Расходы в месяц', expensesAmount);
+
+
+let getBudgetDay = function(x){
+    budgetDay = Math.floor(x / 30 );
+    console.log('budgetDay: ', budgetDay);
+    return budgetDay;
+    
+}
+
+getBudgetDay(mone);
+
+
+let getStatusIncome = function(){
+    
+    if(budgetDay < 0 ){
+            console.log('Что-то пошло не так');
+    }else{      if(budgetDay >= 800){
+                return ('Высокий уровень дохода');    
+                } else if ( 300 <= budgetDay && budgetDay < 800){
+                 return ('Средний уровень дохода');
+                  } else if ( 0 <= budgetDay && budgetDay < 300 ){
+                   return ('Низкий уровень дохода');
+                 } else {
+                   return ('Что то пошло не так');
+    }
+}
+};
+
+
+
+
+
+function getAccumulatedMonth(x){ //Функция возвращает Накопления за месяц
+    accumulatedMonth = x - expensesAmount; 
     return ('Доход за месяц состовляет:', accumulatedMonth);
 }
 
 function getTargetMonth(){ // Функция возвращает за какой период будет достигнута цель
-    MonthsToSave = Math.floor ( mission / ExpensesMonth ); 
+    MonthsToSave = Math.floor ( mission / expensesAmount ); 
     console.log('Cрок достижения цели в месяцах (значение округлить в меньшую сторону',MonthsToSave);
     //return ('Миссия по накоплению суммы будет выполнена через:', MonthsToSave, 'месяцев');
 }
 
 
-let getBudgetDay = function(){
-    budgetDay = Math.floor(money / 30 );
-  //  console.log('Бюджен на 1 день : ', budgetDay); // Вывод бюджета на 1 день
-}
+getAccumulatedMonth();
+getTargetMonth();
+getStatusIncome();
+
+
+
+/*
+
+
+
+
+
+
 
 
 let showTypeof = function(data) {
@@ -90,23 +131,12 @@ let showTypeof = function(data) {
 
 
 
-let getStatusIncome = function(){
 
-    if(budgetDay >= 800){
-        return ('Высокий уровень дохода');    
-    } else if ( 300 <= budgetDay && budgetDay < 800){
-        return ('Средний уровень дохода');
-    } else if ( 0 <= budgetDay && budgetDay < 300 ){
-        return ('Низкий уровень дохода');
-    } else {
-        return ('Что то пошло не так');
-    }
-};
 
-getExpensesMonth(); 
-getAccumulatedMonth();
-getTargetMonth();
-getBudgetDay();
+
+
+
+
 
 showTypeof(money);
 showTypeof(income);
@@ -118,5 +148,5 @@ console.log('Уровень дохода в день:', getStatusIncome());
 
 
 
-
+*/
 
