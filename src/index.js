@@ -105,6 +105,9 @@ function getAccumulatedMonth(x){ //Функция возвращает Нако�
 function getTargetMonth(){ // Функция возвращает за какой период будет достигнута цель
     MonthsToSave = Math.floor ( mission / expensesAmount ); 
     console.log('Cрок достижения цели в месяцах (значение округлить в меньшую сторону',MonthsToSave);
+    if (MonthsToSave < 0){
+      console.log('Цель не будет достигнута');  
+    }
     //return ('Миссия по накоплению суммы будет выполнена через:', MonthsToSave, 'месяцев');
 }
 
@@ -115,13 +118,9 @@ getStatusIncome();
 
 
 
+
+
 /*
-
-
-
-
-
-
 
 
 let showTypeof = function(data) {
@@ -133,16 +132,11 @@ let showTypeof = function(data) {
 
 
 
-
-
-
-
-
 showTypeof(money);
 showTypeof(income);
 showTypeof(deposit);
 
-console.log('Уровень дохода в день:', getStatusIncome());
+
 
 
 
