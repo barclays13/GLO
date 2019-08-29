@@ -1,11 +1,9 @@
-'use strict';
 
 
-let money;
+
 const mission = 6000;
 const period = 10;
 const income = 'рабство';
-let ExpensesMonth;
 let accumulatedMonth;
 let MonthsToSave;
 let budgetDay;
@@ -13,24 +11,25 @@ let amountOfExpenses1;
 let amountOfExpenses2;
 let costsMonth1;
 let costsMonth2;
-
-
+let Expenses;
+let money;
 let  addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Транспорт, питание, отдых').split(","); // возможные расходы
 let deposit = confirm('Есть ли у вас депозит в банке?'); 
 
 
 let start = function (){ // вводим месяный доход
-    do{       
-        money = +prompt('Ваш месячный доход? ', 1300); 
 
-        
-    } while ( typeof(money) === 'number' ||  money.value == '' ||  money == null );
-}
+    do{       
+        money = prompt('Ваш месячный доход? ', 1300);
+      
+    } while ( isNaN(money) || money === null  || money=== '')
+
+};                                                                                                                                                       
 
 let resultMoney = start(); //выводим месячный доходд с проверкой на число
 console.log('Ваш месячный доход', resultMoney);
-/*
 
+/*
 
 let getExpensesMonth = function(){    //Функция возвращает сумму всех расходов за месяц
    
@@ -47,7 +46,7 @@ let getExpensesMonth = function(){    //Функция возвращает су
         }
         
 
-        let Expenses = undefined;
+        Expenses = undefined;
 
         while (isNaN(Expenses)){
             Expenses = +prompt('Во сколько это обойдется?', 250);
@@ -89,7 +88,7 @@ function getAccumulatedMonth(income){ //Функция возвращает На
 }
 
 function getTargetMonth(){ // Функция возвращает за какой период будет достигнута цель
-    MonthsToSave = Math.floor ( mission / ResultGetAccumulatedMonth ); 
+    MonthsToSave = Math.floor( mission / ResultGetAccumulatedMonth ); 
     if (MonthsToSave < 0){
         console.log('Цель не будет достигнута');
     }else
@@ -101,7 +100,7 @@ let ResultGetAccumulatedMonth = getAccumulatedMonth(resultMoney);
 getTargetMonth();
 getStatusIncome();
 
-/*
+
 let showTypeof = function(data) {
     console.log('Переменная', data, typeof (data));
 } 
