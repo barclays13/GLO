@@ -1,6 +1,3 @@
-
-
-
 const mission = 6000;
 const period = 10;
 const income = 'рабство';
@@ -12,10 +9,11 @@ let amountOfExpenses2;
 let costsMonth1;
 let costsMonth2;
 let Expenses;
-let money;
+
 let  addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Транспорт, питание, отдых').split(","); // возможные расходы
 let deposit = confirm('Есть ли у вас депозит в банке?'); 
 
+let money;
 
 let start = function (){ // вводим месяный доход
 
@@ -23,13 +21,13 @@ let start = function (){ // вводим месяный доход
         money = prompt('Ваш месячный доход? ', 1300);
       
     } while ( isNaN(money) || money === null  || money=== '')
-
+    return money;
+    
 };                                                                                                                                                       
 
 let resultMoney = start(); //выводим месячный доходд с проверкой на число
 console.log('Ваш месячный доход', resultMoney);
 
-/*
 
 let getExpensesMonth = function(){    //Функция возвращает сумму всех расходов за месяц
    
@@ -66,7 +64,6 @@ let getBudgetDay = function(x){
     return budgetDay;
 }
 let resultGetBudgetDay = getBudgetDay(resultMoney);
-
 
 
 let getStatusIncome = function(){
@@ -108,4 +105,3 @@ let showTypeof = function(data) {
 showTypeof(money);
 showTypeof(income);
 showTypeof(deposit);
-*/
