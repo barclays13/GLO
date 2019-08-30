@@ -5,11 +5,9 @@ let start = function (){ // вводим месяный доход
     do{       
         money = prompt('Ваш месячный доход? ', 1300);
       
-    } while ( isNaN(money) || money === null  || money=== '');
+    } while ( isNaN(money) || money === null  || money === '');
     return money;
 };
-
-
 
 
 let appData ={
@@ -18,6 +16,8 @@ let appData ={
     expenses: {},
     addExpenses: [],
     deposit: false,
+    percentDeposit: 0,
+    moneyDeposit: 0,
     mission : 8000,
     period : 10,
     budget : 0, 
@@ -25,6 +25,13 @@ let appData ={
     budgetMonth  : 0, 
     expensesMonth : 0, 
         asking: function(){
+
+                if(confirm('Есть ли у вас доп зарабаток')){
+                    let itemIncome = prompt('Какой у вас дополнительный заработок?', 'такси'); // имя доп заработка
+                    let cashIncome = prompt('Cколько в месяц на этом вы зарабатываете', 500); // сумма доп заработка
+                    appData.income[itemIncome] = cashIncome;
+                }
+
                  let  addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Транспорт, питание, отдых'); // возможные расходы
                  appData.addExpenses = addExpenses.split(",");
                  appData.deposit = confirm('Есть ли у вас депозит в банке?');    
@@ -43,6 +50,7 @@ let appData ={
                        appData.expenses[expansName] = exspense;
                     }  if (i === 1){
                         expansName = prompt('Какие обязательные ежемесячные расходы у вас есть? ', 'ЖКХ');
+
                       while ( isNaN(exspense) || exspense === null || exspense === ''  ){
                         exspense = +prompt('Во сколько это обойдется?', 250);
                        }
@@ -50,14 +58,28 @@ let appData ={
                     } 
                     }   
                  
-    } 
+    }, 
+    getInfoDeposit: function(){
+        if(appData.deposit){
+            appData.percentDeposit = promt('Какой годовой процент?', 10);
+            appData.moneyDeposit = promt('Сколько денег вы заложили?', 10);
+
+        }
+    },
+    calcSavedMoney: function(){
+        return appData.budgetMonth * appData.period;
+
+    }
+
+
 
 };
-
+appData.getInfoDeposit ();
+console.log();
 appData.budget = start(); //выводим месячный доходд с проверкой на число
 //appData['budget'] = money;
 
-appData.asking();
+appData.asking(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney()  );
 
 
 
