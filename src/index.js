@@ -54,7 +54,7 @@ let appData ={
 
 };
 
-appData['budget'] = start(); //выводим месячный доходд с проверкой на число
+appData.budget = start(); //выводим месячный доходд с проверкой на число
 //appData['budget'] = money;
 
 appData.asking();
