@@ -40,9 +40,9 @@ let appData ={
                 let  addExpenses = 0;
 
                 do{       
-                   addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Транспорт,     питание, отдых'); // возможные расходы
+                   addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Транспорт,  питание, отдых'); // возможные расходы
                    appData.addExpenses = addExpenses.toLowerCase().split(', ');
-                    } while ( !isNaN(addExpenses)  || addExpenses === null  || addExpenses=== ' ');
+                    } while ( !isNaN(addExpenses)  || addExpenses === null  || addExpenses === ' ');
                 
                 function str(){
                     let arr1 = addExpenses.replace(/(?:^|\s)(\S)/ug, m => m.toUpperCase());
@@ -56,7 +56,11 @@ let appData ={
                 appData.deposit = confirm('Есть ли у вас депозит в банке?');    
                 
                  for (let i = 0; i < 2;  i++){
-                     let nameExspense = prompt('Какие обязательные ежемесячные расходы у вас есть? ', 'ЖКХ');
+                    let nameExspense = 0;
+                    do{
+                    nameExspense = prompt('Какие обязательные ежемесячные расходы у вас есть? ', 'ЖКХ');
+                    } while ( !isNaN(nameExspense)  || nameExspense === null  || nameExspense === ' ');
+
                     let exspense;
                     do{
                         exspense = +prompt('Во сколько это обойдется?', 250);
