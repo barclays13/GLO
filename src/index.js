@@ -38,11 +38,13 @@ let appData ={
                 }
 
                 let  addExpenses = 0;
+
                 do{       
                    addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Транспорт,     питание, отдых'); // возможные расходы
-                  appData.addExpenses = addExpenses.toLowerCase().split(', ');
-                  function str(){
-
+                   appData.addExpenses = addExpenses.toLowerCase().split(', ');
+                    } while ( !isNaN(addExpenses)  || addExpenses === null  || addExpenses=== ' ');
+                
+                function str(){
                     let arr1 = addExpenses.replace(/(?:^|\s)(\S)/ug, m => m.toUpperCase());
                     let  arr2 = arr1.replace(/ +/g, ' ').trim();
                      let  arr3 = arr2.split(', ');
@@ -50,32 +52,20 @@ let appData ={
                     console.log('arr3: ', arr4);
                   }
                   str();
-                } while ( !isNaN(addExpenses)  || appData.percentDeposit === null  || appData.percentDeposit === ' ');
-                
+               
                 appData.deposit = confirm('Есть ли у вас депозит в банке?');    
                 
-
-                let expansName;
-
                  for (let i = 0; i < 2;  i++){
-
-                    let exspense = undefined;
-
-                    if (i === 0){
-                        expansName = prompt('Какие обязательные ежемесячные расходы у вас есть? ', 'Бензин');
-                      while ( isNaN(exspense) || exspense === null || exspense === '' ){
+                     let nameExspense = prompt('Какие обязательные ежемесячные расходы у вас есть? ', 'ЖКХ');
+                    let exspense;
+                    do{
                         exspense = +prompt('Во сколько это обойдется?', 250);
-                       }
-                       appData.expenses[expansName] = exspense;
-                    }  if (i === 1){
-                        expansName = prompt('Какие обязательные ежемесячные расходы у вас есть? ', 'ЖКХ');
-
-                      while ( isNaN(exspense) || exspense === null || exspense === ''  ){
-                        exspense = +prompt('Во сколько это обойдется?', 250);
-                       }
-                       appData.expenses[expansName] = exspense;
+                    }
+                      while ( isNaN(exspense) || exspense === null || exspense === ''  )
+                        
+                       appData.expenses[nameExspense] = exspense;
                     } 
-                    }           
+           
     },  
     getInfoDeposit: function(){
         if ( appData.deposit ){
