@@ -76,13 +76,7 @@ getBook[5].appendChild(bookFive[0]);
 getBook[5].appendChild(bookFive[0]);
 
 
-
-
-
-
 let newElem = document.createElement('li');
-
-
 
 
 let bookSix = getBook[2].getElementsByTagName('li');

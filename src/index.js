@@ -137,8 +137,84 @@ appData.getBudget ();
 appData.getStatusIncome();
 appData.getTargetMonth();
 appData.getInfoDeposit ();
+
 for ( let key in appData){
     console.log('Наша программа включает в себя данные: ' + key +  ' - значение: '+ appData[key]);
 }
 
 console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney()  );
+
+let getButtonStart = document.getElementById('start'); //Получить кнопку "Рассчитать" через id
+let getAddButtonIncome = document.getElementsByTagName('button')[0]; // получили "+" Income
+console.log('getAddButtonIncome: ', getAddButtonIncome);
+let getAddButtonExpenses = document.getElementsByTagName('button')[1]; // получили "+" Expenses
+console.log('getAddButtonIncome: ', getAddButtonExpenses);
+
+let getCheckDeposit = document.querySelector('#deposit-check'); //получить чекбокс по id через querySelector
+console.log('getCheckDeposit: ', getCheckDeposit);
+
+let getAddItionalIncome = document.querySelectorAll('.additional_income-item'); //Получить поля для ввода возможных доходов (additional_income-item) при помощи querySelectorAll
+console.log('getAddItionalIncome: ', getAddItionalIncome);
+
+
+let getBudgetDayValue = document.querySelector('.budget_day-value'); // Получили input Дневной бюджет
+console.log('getBudgetDayValue: ', getBudgetDayValue);
+
+
+let getExpensesMonthValue = document.querySelector('.expenses_month-value');// Получили input Расход за месяц
+console.log('getExpensesMonthValue: ', getExpensesMonthValue);
+
+
+
+let getAdditionalIncomeValue = document.querySelector('.additional_income-value');// Получили input Возможные доходы
+console.log('getAdditionalIncomeValue: ', getAdditionalIncomeValue);
+
+
+
+let getAdditionalExpensesValue = document.querySelector('.additional_expenses-value');// Получили input Возможные расходы
+console.log('getAdditionalExpensesValue: ', getAdditionalExpensesValue);
+
+
+
+let getIncomePeriodValue = document.querySelector('.income_period-value');// Получили input Накопления за период
+console.log('getIncomePeriodValue: ', getIncomePeriodValue);
+
+
+
+let getTargetMonthValue = document.querySelector('.target_month-value');// Получили input Срок достижения цели в месяцах
+console.log('getTargetMonthValue: ', getTargetMonthValue);
+
+
+let getSalaryAmount = document.querySelector('.salary-amount');// Получили input Месячный доход
+console.log('getSalaryAmount: ', getSalaryAmount);
+
+
+
+let getIncomeTitle = document.querySelector('.income-title');// Получили input Дополнительный доход - Наинменование
+console.log('getIncomeTitle: ', getIncomeTitle);
+
+let getIncomeAmount = document.querySelector('.income-amount');// Получили input Дополнительный доход - Сумма
+console.log('getIncomeAmount: ', getIncomeAmount);
+
+
+let getExpensesTitle = document.querySelector('.expenses-title');// Получили input Обязательные расходы - Наинменование
+console.log('getExpensesTitle: ', getExpensesTitle);
+
+
+
+let getExpensesAmount = document.querySelector('.expenses-amount');// Получили input Обязательные расходы - Сумма
+console.log('getExpensesAmount: ', getExpensesAmount);
+
+
+let getAddItionalExpensesItem = document.querySelector('.additional_expenses-item');// Получили input Возможные расходы (перечислите через запятую)
+
+console.log('getAddItionalExpensesItem: ', getAddItionalExpensesItem);
+
+
+
+let getTargetAmount = document.querySelector('.target-amount');// Получили input Цель-сумма
+console.log('getTargetAmount: ', getTargetAmount);
+
+
+let getPeriodSelect = document.querySelector('.period-select');// Получили input Период расчета
+console.log('getTargetAmount: ', getPeriodSelect);
