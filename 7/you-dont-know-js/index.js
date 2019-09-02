@@ -75,6 +75,24 @@ getBook[5].appendChild(bookFive[0]);
 getBook[5].appendChild(bookFive[0]);
 getBook[5].appendChild(bookFive[0]);
 
+
+
+
+
+
+let newElem = document.createElement('li');
+
+
+
+
 let bookSix = getBook[2].getElementsByTagName('li');
-console.log('bookFive: ', bookSix);
+
+console.log('bookSix: ', bookSix);
+
+let elemInUl = getBook[2].getElementsByTagName('ul');
+newElem.textContent = 'Глава 8: За пределами ES6';
+
+let newElemLi = elemInUl[0].appendChild(newElem);
+elemInUl[0].appendChild(bookSix[9]);
+
 
