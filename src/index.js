@@ -1,6 +1,6 @@
 'use strict';
 let getButtonStart = document.getElementById('start'); //Получить кнопку "Рассчитать" через id 
-let getButtoncCancel = document.getElementById('cancel'); //Получить кнопку "Сбросить" через id 
+let getButtonCancel = document.getElementById('cancel'); //Получить кнопку "Сбросить" через id 
 let getAddButtonIncome = document.getElementsByTagName('button')[0]; // получили "+" Income 
 let getAddButtonExpenses = document.getElementsByTagName('button')[1]; // получили "+" Expenses 
 let getCheckDeposit = document.querySelector('#deposit-check'); //получить чекбокс по id через querySelector 
@@ -217,8 +217,16 @@ let btnAll = document.querySelectorAll('button');
             },
             changeBtn : function(){
                 getButtonStart.style.display = 'none';
-                getButtoncCancel.style.display = 'block';
+                getButtonCancel.setAttribute('type','reset');
+                getButtonCancel.style.display = 'block';
+
+            },
+            reset : function(){
+
+                window.location.reload();
+             
             }
+
 
         };
 
@@ -230,7 +238,7 @@ let btnAll = document.querySelectorAll('button');
         getAddButtonExpenses.addEventListener('click', appData.addExpensesBlock);
         getAddButtonIncome.addEventListener('click', appData.addIncomeBlock);
         getPeriodSelect.addEventListener('click', appData.getNumberPeroid);
-        getButtonStart.addEventListener('click', appData.start);
+        getButtonCancel.addEventListener('click', appData.reset);
         
     
 
