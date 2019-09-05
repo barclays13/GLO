@@ -39,27 +39,26 @@ let btnAll = document.querySelectorAll('button');
         deposit: true, 
         percentDeposit: 0, 
         moneyDeposit: 0, 
-                    start : function (){ // вводим месяный доход 
-
+                    start(){ // вводим месяный доход 
+                        console.log(this);
                         if ( getSalaryAmount.value === ''){
                             getButtonStart.setAttribute('readOnly','true');
                             return;
                         }
-                    
-                    appData.budget = +getSalaryAmount.value;
-
-
-                    appData.getExpenses (); 
-                    appData.getIncome();
-                    appData.getExpensesMonth ();
-                    appData.getIncomeMonth(); 
-                    appData.getAddExpenses(); 
-                    appData.getAddIncome(); 
-                    appData.getNumberPeroid();            
-                    appData.getBudget (); 
-                    appData.blockData();  
-                    appData.showResult();
-                    appData.changeBtn();
+          
+                        this.budget = +getSalaryAmount.value;
+                        console.log(this);
+                        this.getExpenses (); 
+                        this.getIncome();
+                        this.getExpensesMonth ();
+                        this.getIncomeMonth(); 
+                        this.getAddExpenses(); 
+                        this.getAddIncome(); ``
+                        this.getNumberPeroid();            
+                        this.getBudget (); 
+                        this.blockData();  
+                        this.showResult();
+                        this.changeBtn();
 
 
                 } ,
@@ -91,7 +90,7 @@ let btnAll = document.querySelectorAll('button');
 
             },
             showResult : function(){ 
-
+          
                 getBudgetMonthValue.value = this.budgetMonth; 
                 getBudgetDayValue.value = this.budgetDay; 
                 getExpensesMonthValue.value = this.expensesMonth; 
@@ -141,7 +140,7 @@ let btnAll = document.querySelectorAll('button');
                 return this.budgetMonth * getPeriodSelect.value; 
             }, 
             getExpensesMonth : function (){ //Функция возвращает сумму всех расходов за месяц 
-
+                console.log(this);
                 for (let key in this.expenses){ 
 
                     this.expensesMonth += +this.expenses[key]; 
@@ -159,11 +158,12 @@ let btnAll = document.querySelectorAll('button');
 
             }, 
             getExpenses : function() { 
- 
+
                 expensesItems.forEach(function(item){ 
                 let itemExpenses = item.querySelector('.expenses-title').value; 
                 let cashExpenses = item.querySelector('.expenses-amount').value; 
                 if(itemExpenses !== '' && cashExpenses !== ''){ 
+                    
                     appData.expenses[itemExpenses] = cashExpenses; 
                 } 
                 }); 
@@ -217,30 +217,42 @@ let btnAll = document.querySelectorAll('button');
             },
             changeBtn : function(){
                 getButtonStart.style.display = 'none';
-                getButtonCancel.setAttribute('type','reset');
+
                 getButtonCancel.style.display = 'block';
 
             },
             reset : function(){
 
-                window.location.reload();
-             
-            }
+                let inputAll = document.querySelectorAll('input');
+                
+                inputAll.forEach(function(item){
+                    item.value = "";
+                });
 
+                let liAllData = data.querySelectorAll('input');
+                
 
-        };
+                liAllData.forEach(function(item){
+                    item.removeAttribute('readOnly');
+                });
 
+                getButtonStart.style.display = 'block';
 
-        appData.start.apply(appData);
-    
+                getButtonCancel.style.display = 'none';
+        
+    }
+};
 
-        getButtonStart.addEventListener('click', appData.start);
+       //appData.start.apply(appData);
+        //appData.start();
+
+        getButtonStart.addEventListener('click', appData.start.bind(appData));
         getAddButtonExpenses.addEventListener('click', appData.addExpensesBlock);
         getAddButtonIncome.addEventListener('click', appData.addIncomeBlock);
         getPeriodSelect.addEventListener('click', appData.getNumberPeroid);
-        getButtonCancel.addEventListener('click', appData.reset);
+        getButtonCancel.addEventListener('click', appData.reset);                                   
         
-    
+
 
         /* 
         for ( let key in appData){ 
