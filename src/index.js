@@ -237,7 +237,6 @@ let btnAll = document.querySelectorAll('button');
                 });
 
                 getButtonStart.style.display = 'block';
-
                 getButtonCancel.style.display = 'none';
         
     }
