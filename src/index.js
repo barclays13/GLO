@@ -107,16 +107,12 @@ let btnAll = document.querySelectorAll('button');
         /*
         AppData.prototype.getInfoDeposit= function(){ 
         if ( appData.deposit ){ 
-
             do{ 
                 appData.percentDeposit = prompt('Какой годовой процент?', 10); 
             } while ( isNaN(appData.percentDeposit) || appData.percentDeposit === null || appData.percentDeposit === ''); 
-
-
             do{ 
                 appData.moneyDeposit = prompt('Сколько денег вы заложили?', 700); 
             } while ( isNaN( appData.moneyDeposit) || appData.moneyDeposit === null || appData.moneyDeposit === ''); 
-
             } 
         }; 
         */
@@ -236,102 +232,25 @@ let btnAll = document.querySelectorAll('button');
             getButtonCancel.style.display = 'none';
 
         };
-   /*         
+           
         AppData.prototype.eventListeners = function (){
+            console.log(this);
             getButtonStart.addEventListener('click', this.start.bind(this));
             getAddButtonExpenses.addEventListener('click', this.addExpensesBlock);
             getAddButtonIncome.addEventListener('click', this.addIncomeBlock);
             getPeriodSelect.addEventListener('click', this.getNumberPeroid);
             getButtonCancel.addEventListener('click', this.reset);    
-
+            
         };
- */
+ 
 
         const appData = new AppData ();
 
-        console.log('appData: ', appData);
-     //   AppData.prototype.eventListeners();
+        appData.eventListeners();
     
-
+/* 
         getButtonStart.addEventListener('click', appData.start.bind(appData));
         getAddButtonExpenses.addEventListener('click', appData.addExpensesBlock);
         getAddButtonIncome.addEventListener('click', appData.addIncomeBlock);
         getPeriodSelect.addEventListener('click', appData.getNumberPeroid);
-        getButtonCancel.addEventListener('click', appData.reset);   
-
-
-
-
-
-
-
-
-
-
-        
-        function DomElement (selector, height, width, bg, fontSize){
-            
-            this.selector = function (selector) {
-                
-                console.log('selector:', selector);
-
-                if ( selector.trim()[0] == '.'){
-    
-                    let newDiv = document.createElement("div");
-                    console.log('newDiv: ', newDiv);
-                    newDiv.className = selector;
-                    newDiv.innerHTML = 'любой текст';
-                    newDiv.style.cssText = {};
-    
-                }     if ( selector.trim()[0] == '#'){
-    
-                    let id = document.createElement("p");
-                    console.log('id: ', id);
-                    id.innerHTML = 'любой текст';
-    
-                }
-        
-            };
-            this.height = height;
-            this.width = width;
-            this.bg = bg;
-            this.fontSize = fontSize;
-
-        }
-
-    
-/*
-            DomElement.prototype.addClass = function () {
-
-            let nameClassOrId = prompt('Введите название класса через точку или id через решетку', '.className или #idName');
-        
-
-            if ( nameClassOrId.trim()[0] == '.'){
-
-                let newDiv = document.createElement("div");
-                console.log('newDiv: ', newDiv);
-                newDiv.className = nameClassOrId;
-                newDiv.innerHTML = 'любой текст';
-                newDiv.style.cssText = {};
-
-            }     if ( nameClassOrId.trim()[0] == '#'){
-
-                let id = document.createElement("p");
-                console.log('id: ', id);
-                id.innerHTML = 'любой текст';
-
-            }
-
-    
-        };
- 
-*/
-        let domElement = new DomElement('.class');
-
-        
-        console.log(domElement);
-
-
-
-                               
-      
+        getButtonCancel.addEventListener('click', appData.reset);         */
