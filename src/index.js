@@ -326,7 +326,7 @@ let btnAll = document.querySelectorAll('button');
         };
  
 */
-        let domElement = new DomElement('.12321');
+        let domElement = new DomElement('.class');
 
         
         console.log(domElement);
