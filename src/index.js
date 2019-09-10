@@ -93,13 +93,12 @@ const depositBank = document.querySelector('.deposit-bank'),
             } 
 
         };
-        AppData.prototype.addBlock = function (getItem, getAddButton){
-            let cloneItem = getItem[0].cloneNode(true);
-            getItem[0].parentNode.insertBefore(cloneItem, getAddButton);
-            getItem = document.querySelectorAll('.income-items');
-
-            if( getItem.length == 3 ){ 
-                getAddButton.style.display = 'none'; 
+        AppData.prototype.addBlock = function (){
+            let cloneItem = this.getItem[0].cloneNode(true);
+            this.getItem[0].parentNode.insertBefore(cloneItem, this.getAddButton);
+            this.getItem = document.querySelectorAll(this.item);
+            if( this.getItem.length == 3 ){ 
+                this.getAddButton.style.display = 'none'; 
             } 
 
         };
@@ -244,11 +243,12 @@ const depositBank = document.querySelector('.deposit-bank'),
            
         AppData.prototype.eventListeners = function (){
             getButtonStart.addEventListener('click', this.start.bind(this)  );
-            getAddButtonExpenses.addEventListener('click', this.addBlock(getIncomeItem,getAddButtonIncome ));
-            getAddButtonIncome.addEventListener('click', this.addBlock(getIncomeItem,getAddButtonIncome ));
+            getAddButtonExpenses.addEventListener('click', this.addBlock.bind({getItem: expensesItems, getAddButton : getAddButtonExpenses, item: ".expenses-items"}));
+            getAddButtonIncome.addEventListener('click', this.addBlock.bind({getItem: getIncomeItem, getAddButton : getAddButtonIncome, item: ".income-items"}));      
+            //getAddButtonExpenses.addEventListener('click', this.addBlock.bind({getItem: expensesItems, getAddButton : getAddButtonExpenses, item: ".expenses-items"}));
+            //getAddButtonIncome.addEventListener('click', this.addBlock.bind({getItem: getIncomeItem, getAddButton : getAddButtonIncome, item: ".income-items"}));      
             getPeriodSelect.addEventListener('click', this.getNumberPeroid);
             getButtonCancel.addEventListener('click', this.reset);    
-            
         };
 
  
