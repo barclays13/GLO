@@ -63,6 +63,8 @@ const depositBank = document.querySelector('.deposit-bank'),
             this.getIncomeMonth(); 
             this.getAddExpenses(); 
             this.getAddIncome();
+            //this.getAdd(getAddItionalIncome, addIncome);
+            //this.getAdd(1 , 5 ,4 ,5);
             this.getNumberPeroid();    
             this.getInfoDeposit();   
             this.getBudget (); 
@@ -72,7 +74,7 @@ const depositBank = document.querySelector('.deposit-bank'),
 
 
         } ;
-
+        /*
         AppData.prototype.addExpensesBlock = function () { 
             const cloneExpensesItem = expensesItems[0].cloneNode(true); //
             expensesItems[0].parentNode.insertBefore(cloneExpensesItem,getAddButtonExpenses); 
@@ -93,6 +95,8 @@ const depositBank = document.querySelector('.deposit-bank'),
             } 
 
         };
+        */
+
         AppData.prototype.addBlock = function (){
             let cloneItem = this.getItem[0].cloneNode(true);
             this.getItem[0].parentNode.insertBefore(cloneItem, this.getAddButton);
@@ -108,7 +112,6 @@ const depositBank = document.querySelector('.deposit-bank'),
             getBudgetMonthValue.value = this.budgetMonth; 
             getBudgetDayValue.value = this.budgetDay; 
             getExpensesMonthValue.value = this.expensesMonth; 
-            console.log(appData);
             getAdditionalExpensesValue.value = this.addExpenses.join(', '); 
             getAdditionalIncomeValue.value = this.addIncome.join(', '); 
             getTargetMonthValue.value = Math.ceil(this.getTargetMonth());
@@ -125,21 +128,26 @@ const depositBank = document.querySelector('.deposit-bank'),
                     appData.moneyDeposit = depositAmount.value; 
             }
         }; 
-     
+        
         AppData.prototype.getAddExpenses = function(){  //названия  через ,
-
+ 
             const addExpenses = getAddItionalExpensesItem.value.split(','); 
-
+   
             addExpenses.forEach((item)=>{ 
+                console.log(item);
                 item = item.trim(); 
                 if ( item !== ''){ 
                     this.addExpenses.push(item); 
                 } 
             }); 
         }; 
-        AppData.prototype.getAddIncome = function() { // поля возможных доходов
 
+
+        AppData.prototype.getAddIncome = function() { // поля возможных доходов
+      
+  
             getAddItionalIncome.forEach((item)=>{
+                
                 let itemValue = item.value.trim();
                 if(item.value !== ''){
                     this.addIncome.push(itemValue);
@@ -148,6 +156,18 @@ const depositBank = document.querySelector('.deposit-bank'),
             });
 
         }; 
+/*
+        AppData.prototype.getAdd = function(...arr){  //названия  через ,
+            let arr1 = arr.split(',');
+            arr1[0].forEach((item)=>{
+                let x = item.value.trim();
+                if(x !== ''){
+                    this.arr1[1].push(x);
+                }
+            }); 
+
+        }; 
+*/
         AppData.prototype.calcPeriod= function (){
             return this.budgetMonth * getPeriodSelect.value; 
         }; 
