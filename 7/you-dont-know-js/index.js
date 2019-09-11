@@ -1,4 +1,4 @@
-'use strict';
+
 /*
 console.log(document); //смотрим документ
 console.log('document: ', document.parentElement); // нулл
@@ -6,9 +6,8 @@ console.log('document: ', document.children); // все дети document
 console.log(document.querySelectorAll('h2')); // все теги с h2 выводим
 
 
-
 */
-
+/*
 let getBooks = document.querySelectorAll('.books');
 console.log('getBooks: ', getBooks);
 let getBook = document.querySelectorAll('.book');
@@ -17,8 +16,6 @@ console.log('getBook: ', getBook);
 
 //getBooks[1].removeChild(getBook[1]); // удаляем 3 элемент
 //getBooks[0].insertBefore(getBook[1], getBook[0]); // перемещает элемент в конец родителя
-
-
 
 
 
@@ -89,4 +86,16 @@ newElem.textContent = 'Глава 8: За пределами ES6';
 let newElemLi = elemInUl[0].appendChild(newElem);
 elemInUl[0].appendChild(bookSix[9]);
 
+
+*/
+
+
+let sum = function(a, b){ 
+    console.log(this);
+    return a + b;
+};
+
+let newSum = sum(null,2,3);
+
+newSum();
 
