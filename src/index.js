@@ -109,7 +109,6 @@ const depositBank = document.querySelector('.deposit-bank'),
             getBudgetMonthValue.value = this.budgetMonth; 
             getBudgetDayValue.value = this.budgetDay; 
             getExpensesMonthValue.value = this.expensesMonth; 
-            console.log(appData);
             getAdditionalExpensesValue.value = this.addExpenses.join(', '); 
             getAdditionalIncomeValue.value = this.addIncome.join(', '); 
             getTargetMonthValue.value = Math.ceil(this.getTargetMonth());
@@ -239,13 +238,14 @@ const depositBank = document.querySelector('.deposit-bank'),
 
             getButtonStart.style.display = 'block';
             getButtonCancel.style.display = 'none';
+            getPeriodSelect.value = 0;
 
         };
            
         AppData.prototype.eventListeners = function (){
             getButtonStart.addEventListener('click', this.start.bind(this)  );
-            getAddButtonExpenses.addEventListener('click', this.addBlock(getIncomeItem,getAddButtonIncome ));
-            getAddButtonIncome.addEventListener('click', this.addBlock(getIncomeItem,getAddButtonIncome ));
+            getAddButtonExpenses.addEventListener('click', this.addBlock.bind(expensesItems,getAddButtonExpenses)); // addExpensesBlock (expensesItems,getAddButtonExpenses)
+            getAddButtonIncome.addEventListener('click', this.addBlock.bind(getIncomeItem,getAddButtonIncome)); // addIncomeBlock  (getIncomeItem,getAddButtonIncome)
             getPeriodSelect.addEventListener('click', this.getNumberPeroid);
             getButtonCancel.addEventListener('click', this.reset);    
             
@@ -285,9 +285,3 @@ const depositBank = document.querySelector('.deposit-bank'),
 
         const appData = new AppData ();
         appData.eventListeners(); 
-/* 
-        getButtonStart.addEventListener('click', appData.start.bind(appData));
-        getAddButtonExpenses.addEventListener('click', appData.addExpensesBlock);
-        getAddButtonIncome.addEventListener('click', appData.addIncomeBlock);
-        getPeriodSelect.addEventListener('click', appData.getNumberPeroid);
-        getButtonCancel.addEventListener('click', appData.reset);         */
