@@ -13,16 +13,16 @@ const getAdditionalExpensesValue = document.querySelector('.additional_expenses-
 const getIncomePeriodValue = document.querySelector('.income_period-value');// Получили input Накопления за период 
 const getTargetMonthValue = document.querySelector('.target_month-value');// Получили input Срок достижения цели в месяцах 
 const getSalaryAmount = document.querySelector('.salary-amount');// Получили input Месячный доход 
-let expensesItems = document.querySelectorAll(".expenses-items");
+const expensesItems = document.querySelectorAll(".expenses-items");
 const getIncomeTitle = document.querySelector('.income-title');// Получили input Дополнительный доход - Наинменование 
 const getExpensesTitle = document.querySelector('.expenses-title');// Получили input Обязательные расходы - Наинменование 
 const getExpensesAmount = document.querySelector('.expenses-amount');// Получили input Обязательные расходы - Сумма 
 const getPeriodSelect = document.querySelector('.period-select');// Получили input Период расчета 
 const getAddItionalExpensesItem = document.querySelector('.additional_expenses-item');// Получили input Возможные расходы (перечислите через запятую) 
 const getTargetAmount = document.querySelector('.target-amount');// Получили input Цель-сумма 
-let getIncomeItem = document.querySelectorAll('.income-items');
+const getIncomeItem = document.querySelectorAll('.income-items');
 const data = document.querySelector('.data');
-let btnAll = document.querySelectorAll('button');
+const btnAll = document.querySelectorAll('button');
 const depositCheck = document.getElementById('deposit-check');
 const depositBank = document.querySelector('.deposit-bank'),
     depositAmount = document.querySelector('.deposit-amount'),
@@ -61,10 +61,16 @@ const depositBank = document.querySelector('.deposit-bank'),
             this.getIncome();
             this.getExpensesMonth ();
             this.getIncomeMonth(); 
-            this.getAddExpenses(); 
-            this.getAddIncome();
-            //this.getAdd(getAddItionalIncome, addIncome);
-            //this.getAdd(1 , 5 ,4 ,5);
+            //this.otherIncome ();
+            //this.otherExpenses();
+            //console.log('this.otherExpenses: ', this.otherIncome ());
+            
+            //console.log('this.otherIncome: ', this.otherIncome());
+            
+            //this.getAddExpenses(); 
+            //this.getAddIncome();
+            this.getAdd(this.otherIncome (), this.addIncome );
+            this.getAdd(this.otherExpenses (), this.addExpenses );
             this.getNumberPeroid();    
             this.getInfoDeposit();   
             this.getBudget (); 
@@ -128,24 +134,50 @@ const depositBank = document.querySelector('.deposit-bank'),
                     appData.moneyDeposit = depositAmount.value; 
             }
         }; 
-        
+    /*     
         AppData.prototype.getAddExpenses = function(){  //названия  через ,
+            const getget = getAddItionalExpensesItem.value;
  
-            const addExpenses = getAddItionalExpensesItem.value.split(','); 
-   
+            const addExpenses = getget.split(','); 
+    
+            
             addExpenses.forEach((item)=>{ 
-                console.log(item);
+
                 item = item.trim(); 
                 if ( item !== ''){ 
                     this.addExpenses.push(item); 
                 } 
             }); 
         }; 
+        */
+        AppData.prototype.otherExpenses = function() { // поля возможных доходов
+            return getAddItionalExpensesItem.value;
+            
+        }; 
 
 
+        AppData.prototype.otherIncome = function() { // поля возможных доходов
+            return getAddItionalIncome[0].value +','+ getAddItionalIncome[1].value;
+
+        }; 
+
+        AppData.prototype.getAdd = function(elem1, elem2){  //названия  через ,
+
+            const result = elem1.split(','); 
+
+            result.forEach((item)=>{ 
+
+                item = item.trim(); 
+                if ( item !== ''){ 
+                    elem2.push(item); 
+                } 
+            }); 
+
+        }; 
+/*
         AppData.prototype.getAddIncome = function() { // поля возможных доходов
-      
-  
+       
+
             getAddItionalIncome.forEach((item)=>{
                 
                 let itemValue = item.value.trim();
@@ -156,17 +188,8 @@ const depositBank = document.querySelector('.deposit-bank'),
             });
 
         }; 
-/*
-        AppData.prototype.getAdd = function(...arr){  //названия  через ,
-            let arr1 = arr.split(',');
-            arr1[0].forEach((item)=>{
-                let x = item.value.trim();
-                if(x !== ''){
-                    this.arr1[1].push(x);
-                }
-            }); 
 
-        }; 
+
 */
         AppData.prototype.calcPeriod= function (){
             return this.budgetMonth * getPeriodSelect.value; 
