@@ -1,4 +1,5 @@
 'use strict';
+const periodAmount = document.querySelector('.period-amount');
 const getButtonStart = document.getElementById('start'); //Получить кнопку "Рассчитать" через id 
 const getButtonCancel = document.getElementById('cancel'); //Получить кнопку "Сбросить" через id 
 const getAddButtonIncome = document.getElementsByTagName('button')[0]; // получили "+" Income 
@@ -191,7 +192,7 @@ const depositBank = document.querySelector('.deposit-bank'),
         getNumberPeroid (){ 
             //return this.budgetMonth * this.calcPeriod.value;
             
-            const periodAmount = document.querySelector('.period-amount');
+            
             periodAmount.textContent = getPeriodSelect.value; 
             return getPeriodSelect.value;
         }
@@ -224,6 +225,7 @@ const depositBank = document.querySelector('.deposit-bank'),
             getButtonStart.style.display = 'block';
             getButtonCancel.style.display = 'none';
             getPeriodSelect.value = 0;
+            periodAmount.textContent = 1;
 
         }
         
